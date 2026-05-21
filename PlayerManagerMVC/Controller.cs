@@ -1,22 +1,25 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PlayerManagerMVC
 {
+    /// <summary>
+    /// This class represents the concept of a Controller in the MVC pattern.
+    /// </summary>
     public class Controller
     {
-        private PlayerList players;
+        // The player list (part of the Model)
+        private readonly PlayerList players;
+
         public Controller(PlayerList players)
         {
+            // Keep the player list (part of the model)
             this.players = players;
         }
 
         /// <summary>
         /// Run the player listing program instance
         /// </summary>
-        private void Run(IView view)
+        public void Run(IView view)
         {
             // We keep the user's option here
             string option;
@@ -26,7 +29,6 @@ namespace PlayerManagerMVC
             {
                 // Show menu and get user option
                 option = view.MainMenu();
-
 
                 // Determine the option specified by the user and act on it
                 switch (option)
@@ -40,16 +42,16 @@ namespace PlayerManagerMVC
                         view.ListPlayers(players);
                         break;
                     case "3":
-                        ListPlayersWithScoreGreaterThan();
+                        ListPlayersWithScoreGreaterThan(view);
                         break;
                     case "4":
-                        SortPlayerList();
+                        SortPlayerList(view);
                         break;
                     case "0":
                         view.ExitMessage();
                         break;
                     default:
-                        view.BadOption("Unknown option!");
+                        view.ErrorMessage("Unknown option!");
                         break;
                 }
 
@@ -85,25 +87,22 @@ namespace PlayerManagerMVC
         {
             PlayerOrder playerOrder = view.AskForPlayerOrder();
 
-
             switch (playerOrder)
             {
                 case PlayerOrder.ByScore:
                     players.Sort();
                     break;
                 case PlayerOrder.ByName:
-                    players.Sort(compareByName);
+                    players.SortByName();
                     break;
                 case PlayerOrder.ByNameReverse:
-                    players.Sort(compareByNameReverse);
+                    players.SortByNameReverse();
                     break;
                 default:
-                    view.BadOption("Unknown player order! ");
+                    view.ErrorMessage("Unknown player order!");
                     break;
             }
         }
+
     }
-
-
-}
 }

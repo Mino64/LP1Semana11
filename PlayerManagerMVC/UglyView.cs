@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+
 namespace PlayerManagerMVC
 {
     public class UglyView : IView
     {
+
         /// <summary>
         /// Shows the main menu.
         /// </summary>
@@ -24,12 +26,11 @@ namespace PlayerManagerMVC
         public void ExitMessage()
         {
             Console.WriteLine("Bye!");
-
         }
 
-        public void BadOption(string msg)
+        public void ErrorMessage(string msg)
         {
-            Console.Error.WriteLine("\n>>> {msg} <<<\n");
+            Console.Error.WriteLine($"\n>>> {msg} <<<\n");
         }
 
         public void WaitForUser()
@@ -44,6 +45,7 @@ namespace PlayerManagerMVC
         {
             string name;
             int score;
+
             // Ask for player info
             Console.WriteLine("\nInsert player");
             Console.WriteLine("-------------\n");
@@ -54,6 +56,7 @@ namespace PlayerManagerMVC
 
             return (name, score);
         }
+
         /// <summary>
         /// Show all players in a list of players. This method can be static
         /// because it doesn't depend on anything associated with an instance
@@ -90,7 +93,6 @@ namespace PlayerManagerMVC
             Console.Write("> ");
 
             return Enum.Parse<PlayerOrder>(Console.ReadLine());
-
         }
 
         public int AskForMinScore()
@@ -99,6 +101,5 @@ namespace PlayerManagerMVC
             Console.Write("\nMinimum score player should have? ");
             return Convert.ToInt32(Console.ReadLine());
         }
-
     }
 }

@@ -2,6 +2,9 @@ using System;
 
 namespace PlayerManagerMVC
 {
+    /// <summary>
+    /// The Player class, part of the Model in MVC.
+    /// </summary>
     public class Player : IComparable<Player>
     {
         public string Name { get; }

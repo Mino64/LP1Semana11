@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace PlayerManagerMVC
 {
     /// <summary>
-    /// Compares players by name.
+    /// Compares players by name. This class is part of the Model.
     /// </summary>
     public class CompareByName : IComparer<Player>
     {

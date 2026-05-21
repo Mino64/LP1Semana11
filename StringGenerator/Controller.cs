@@ -13,8 +13,6 @@ namespace StringGenerator
         {
             try
             {
-                //int.Parse(input);
-               // int seed = int.Parse(input);
                 view.printOnScreen(Model.Generate(int.Parse(input)));
             }
             catch

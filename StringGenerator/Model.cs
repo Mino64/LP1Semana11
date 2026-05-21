@@ -18,8 +18,7 @@ namespace StringGenerator
 
             for (int i = 0; i < length; i++)
             {
-                int index = rng.Next(chars.Length);
-                result.Append(chars[index]);
+                result.Append(chars[rng.Next(chars.Length)]);
             }
 
             return result.ToString();
